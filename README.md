@@ -88,8 +88,10 @@ Data Collection → Data Cleaning → Feature Extraction → Text Vectorization 
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone <your-repo-link>
-cd movie-recommendation-system
+git clone https://github.com/susmarika-01/Internship-Projects.git
+cd Internship-Projects
+git checkout movie-recommender
+
 ```
 
 ### 2️⃣ Install Dependencies
