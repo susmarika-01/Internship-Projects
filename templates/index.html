@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Attendance System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #6c886d;
+        --primary-dark: #3d8b40;
+        --secondary: #2196f3;
+        --accent: #ff9800;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --gray: #6c757d;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        transform: rotate(30deg);
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        position: relative;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        position: relative;
+      }
+
+      .header-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin: 40px 0;
+      }
+
+      .menu-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        text-decoration: none;
+        color: var(--dark);
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-top: 5px solid;
+      }
+
+      .menu-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: inherit;
+      }
+
+      .menu-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .menu-card i {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 50%;
+        color: white;
+      }
+
+      .menu-card h3 {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .menu-card p {
+        color: var(--gray);
+        margin-bottom: 20px;
+      }
+
+      .menu-card .btn {
+        padding: 10px 20px;
+        border-radius: 50px;
+        background: var(--light);
+        color: var(--dark);
+        font-weight: 600;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+      }
+
+      .menu-card:hover .btn {
+        background: var(--primary);
+        color: white;
+      }
+
+      .register {
+        border-color: var(--secondary);
+      }
+      .register i {
+        background: var(--secondary);
+      }
+
+      .scanner {
+        border-color: var(--primary);
+      }
+      .scanner i {
+        background: var(--primary);
+      }
+
+      .view {
+        border-color: var(--accent);
+      }
+      .view i {
+        background: var(--accent);
+      }
+
+      .info-section {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+        margin-top: 40px;
+      }
+
+      .info-section h3 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .step {
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        background: var(--light);
+        transition: var(--transition);
+      }
+
+      .step:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .step-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        line-height: 40px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .file-path {
+        background: var(--light);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        text-align: center;
+        font-family: monospace;
+        border-left: 4px solid var(--primary);
+      }
+
+      .stats {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        flex: 1;
+        min-width: 150px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2rem;
+        }
+
+        .menu {
+          grid-template-columns: 1fr;
+        }
+
+        .steps {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-icon">
+          <i class="fas fa-qrcode"></i>
+        </div>
+        <h1>QR Code Attendance System</h1>
+        <p>Efficient employee attendance management using QR technology</p>
+      </div>
+
+      <div class="menu">
+        <a href="/register" class="menu-card register">
+          <i class="fas fa-user-plus"></i>
+          <h3>Register Employee</h3>
+          <p>Create new employee profiles and generate personalized QR codes</p>
+          <div class="btn">Get Started</div>
+        </a>
+
+        <a href="/scanner" class="menu-card scanner">
+          <i class="fas fa-camera"></i>
+          <h3>QR Scanner</h3>
+          <p>
+            Scan QR codes for quick and accurate attendance check-in/check-out
+          </p>
+          <div class="btn">Scan Now</div>
+        </a>
+
+        <a href="/view" class="menu-card view">
+          <i class="fas fa-chart-bar"></i>
+          <h3>View Attendance</h3>
+          <p>
+            Check detailed attendance records and generate comprehensive reports
+          </p>
+          <div class="btn">View Reports</div>
+        </a>
+      </div>
+
+      <div class="info-section">
+        <h3>How It Works</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Register Employees</h4>
+            <p>
+              Add employee details and generate unique QR codes for each staff
+              member
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Scan QR Codes</h4>
+            <p>
+              Employees scan their QR codes using the scanner for check-in and
+              check-out
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Record Attendance</h4>
+            <p>
+              The system automatically records timestamps and attendance data
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h4>View Reports</h4>
+            <p>
+              Access detailed attendance records and generate comprehensive
+              reports
+            </p>
+          </div>
+        </div>
+
+        <div class="file-path">
+          <strong>Attendance files are automatically saved in:</strong><br />
+          <code>static/attendance/attendance_YYYY-MM-DD.csv</code>
+        </div>
+      </div>
+
+      <footer>
+        <p>QR Attendance System &copy; 2023 | Efficient. Accurate. Reliable.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Simple animation on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".menu-card");
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, index * 200);
+        });
+      });
+    </script>
+  </body>
+</html>

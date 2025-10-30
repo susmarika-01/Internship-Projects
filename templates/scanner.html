@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scanner | Attendance System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2196f3;
+            --primary-dark: #1976d2;
+            --secondary: #4caf50;
+            --accent: #ff9800;
+            --warning: #f44336;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header with integrated navigation */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: rotate(30deg);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .header-icon {
+            font-size: 2.5rem;
+            margin-right: 20px;
+        }
+
+        /* Top Navigation Bar - Same as View Attendance page */
+        .top-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .nav-btn {
+            background: white;
+            color: var(--primary);
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            box-shadow: var(--shadow);
+            flex: 1;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .nav-btn i {
+            margin-right: 8px;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Debug Info */
+        .debug-info {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .debug-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .debug-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Scanner Container */
+        .scanner-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .scanner-container h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .scanner-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .start-btn {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .start-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .stop-btn {
+            background: var(--warning);
+            color: white;
+        }
+
+        .stop-btn:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        /* Action Buttons - Always visible but disabled when no scan */
+        .action-buttons {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .action-buttons h4 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .action-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .checkin-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .checkin-btn:hover:not(:disabled) {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .checkout-btn {
+            background: var(--accent);
+            color: white;
+        }
+
+        .checkout-btn:hover:not(:disabled) {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .clear-btn {
+            background: var(--gray);
+            color: white;
+        }
+
+        .clear-btn:hover:not(:disabled) {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Scan Result */
+        .scan-result {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+            min-height: 150px;
+            border-left: 5px solid var(--gray);
+        }
+
+        .scan-result h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .scan-result.success {
+            border-left-color: var(--secondary);
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+        }
+
+        .scan-result.error {
+            border-left-color: var(--warning);
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+        }
+
+        .scan-result.info {
+            border-left-color: var(--primary);
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+        }
+
+        .employee-info {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .employee-info strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .status-inactive {
+            background: #ffebee;
+            color: var(--warning);
+        }
+
+        .status-active {
+            background: #e8f5e8;
+            color: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .top-nav {
+                flex-direction: column;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .debug-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with integrated navigation -->
+        <div class="header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>QR Code Scanner</h1>
+                    <p>Scan employee QR codes for attendance tracking</p>
+                </div>
+                <div class="header-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Navigation - Same as View Attendance page -->
+        <div class="top-nav">
+            <a href="/" class="nav-btn">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="/register" class="nav-btn">
+                <i class="fas fa-user-plus"></i> Register Employee
+            </a>
+            <a href="/qrcodes" class="nav-btn">
+                <i class="fas fa-qrcode"></i> View QR Codes
+            </a>
+        </div>
+
+        <!-- Debug Info -->
+        <div class="debug-info">
+            <div>
+                <strong>Debug Info:</strong>
+                <a href="/debug_files" target="_blank">
+                    <i class="fas fa-file-alt"></i> Check Attendance Files
+                </a>
+            </div>
+            <div>
+                <i class="fas fa-calendar-alt"></i>
+                Current Date: <span id="currentDate"></span>
+            </div>
+        </div>
+
+        <!-- Scanner Container -->
+        <div class="scanner-container">
+            <div class="scanner-icon">
+                <i class="fas fa-qrcode"></i>
+            </div>
+            <h3>Camera Feed</h3>
+            <p>Start the camera and point it at a QR code to scan.</p>
+            <p class="status-indicator status-inactive" id="cameraStatus">
+                <i class="fas fa-circle"></i> Camera Inactive
+            </p>
+            
+            <div class="note-box">
+                <p><strong>Note:</strong> Camera window will open separately. Press 'Q' to close camera.</p>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="start-btn" onclick="startScanner()">
+                    <i class="fas fa-play"></i> Start Camera
+                </button>
+                <button class="stop-btn" onclick="stopScanner()">
+                    <i class="fas fa-stop"></i> Stop Camera
+                </button>
+            </div>
+
+            <!-- Action Buttons - ALWAYS VISIBLE but disabled when no scan -->
+            <div class="action-buttons" id="actionButtons">
+                <h4><i class="fas fa-tasks"></i> Attendance Actions</h4>
+                <div class="action-controls">
+                    <button class="checkin-btn" id="checkInBtn" onclick="checkIn()" disabled>
+                        <i class="fas fa-sign-in-alt"></i> Check In
+                    </button>
+                    <button class="checkout-btn" id="checkOutBtn" onclick="checkOut()" disabled>
+                        <i class="fas fa-sign-out-alt"></i> Check Out
+                    </button>
+                    <button class="clear-btn" id="clearBtn" onclick="clearScan()" disabled>
+                        <i class="fas fa-times"></i> Clear Scan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scan Result -->
+        <div class="scan-result info" id="scanResult">
+            <h3><i class="fas fa-search"></i> Scan Result</h3>
+            <div id="resultText">
+                <p>No QR code scanned yet. Start the camera and scan an employee QR code.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let scanInterval;
+        let currentScanData = null;
+
+        // Set current date
+        document.getElementById("currentDate").textContent = new Date()
+            .toISOString()
+            .split("T")[0];
+
+        function updateActionButtons() {
+            const hasScanData = currentScanData !== null;
+            document.getElementById("checkInBtn").disabled = !hasScanData;
+            document.getElementById("checkOutBtn").disabled = !hasScanData;
+            document.getElementById("clearBtn").disabled = !hasScanData;
+        }
+
+        function startScanner() {
+            fetch("/start_scan")
+                .then((response) => response)
+                .then(() => {
+                    document.getElementById("cameraStatus").className = "status-indicator status-active";
+                    document.getElementById("cameraStatus").innerHTML = '<i class="fas fa-circle"></i> Camera Active';
+                    startPolling();
+                    alert("Camera started! Look for the camera window. Press Q to close camera.");
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert("Error starting camera. Make sure camera is available.");
+                });
+        }
+
+        function stopScanner() {
+            fetch("/stop_scan")
+                .then((response) => response)
+                .then(() => {
+                    document.getElementById("cameraStatus").className = "status-indicator status-inactive";
+                    document.getElementById("cameraStatus").innerHTML = '<i class="fas fa-circle"></i> Camera Inactive';
+                    stopPolling();
+                    alert("Camera stopped!");
+                })
+                .catch((error) => console.error("Error:", error));
+        }
+
+        function startPolling() {
+            scanInterval = setInterval(checkScanResult, 1000);
+        }
+
+        function stopPolling() {
+            if (scanInterval) {
+                clearInterval(scanInterval);
+            }
+        }
+
+        function checkScanResult() {
+            fetch("/get_scan_result")
+                .then((response) => response.json())
+                .then((data) => {
+                    const resultDiv = document.getElementById("scanResult");
+                    const resultText = document.getElementById("resultText");
+
+                    if (data.status === "no_scan") {
+                        resultDiv.className = "scan-result info";
+                        resultText.innerHTML = "<p>No QR code scanned yet. Start the camera and scan an employee QR code.</p>";
+                        currentScanData = null;
+                    } else if (data.error) {
+                        resultDiv.className = "scan-result error";
+                        resultText.innerHTML = `<div class="employee-info"><strong>Error:</strong><br>${data.error}</div>`;
+                        currentScanData = null;
+                    } else {
+                        resultDiv.className = "scan-result success";
+                        resultText.innerHTML = `
+                            <div class="employee-info">
+                                <strong>Employee Scanned Successfully!</strong>
+                                <div style="text-align: left; margin-top: 10px;">
+                                    <i class="fas fa-user"></i> <strong>Name:</strong> ${data.name}<br>
+                                    <i class="fas fa-id-card"></i> <strong>ID:</strong> ${data.emp_id}<br>
+                                    <i class="fas fa-building"></i> <strong>Department:</strong> ${data.dept}<br>
+                                    <i class="fas fa-clock"></i> <strong>Time:</strong> ${data.timestamp}
+                                </div>
+                            </div>
+                        `;
+                        currentScanData = data;
+                    }
+                    updateActionButtons();
+                })
+                .catch((error) => console.error("Error:", error));
+        }
+
+        function checkIn() {
+            if (!currentScanData) {
+                alert("Please scan a QR code first!");
+                return;
+            }
+
+            fetch("/checkin", { method: "POST" })
+                .then((response) => response.json())
+                .then((data) => {
+                    const resultDiv = document.getElementById("scanResult");
+                    const resultText = document.getElementById("resultText");
+
+                    if (data.success) {
+                        resultDiv.className = "scan-result success";
+                        resultText.innerHTML = `
+                            <div class="employee-info">
+                                <strong>Check-In Successful!</strong><br><br>
+                                ${data.message}<br><br>
+                                <i class="fas fa-save"></i> <strong>File saved:</strong> static/attendance/attendance_${new Date().toISOString().split("T")[0]}.csv
+                            </div>
+                        `;
+                    } else {
+                        resultDiv.className = "scan-result error";
+                        resultText.innerHTML = `<div class="employee-info"><strong>Error:</strong><br>${data.message}</div>`;
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert("Error processing check-in");
+                });
+        }
+
+        function checkOut() {
+            if (!currentScanData) {
+                alert("Please scan a QR code first!");
+                return;
+            }
+
+            fetch("/checkout", { method: "POST" })
+                .then((response) => response.json())
+                .then((data) => {
+                    const resultDiv = document.getElementById("scanResult");
+                    const resultText = document.getElementById("resultText");
+
+                    if (data.success) {
+                        resultDiv.className = "scan-result success";
+                        resultText.innerHTML = `
+                            <div class="employee-info">
+                                <strong>Check-Out Successful!</strong><br><br>
+                                ${data.message}<br><br>
+                                <i class="fas fa-save"></i> <strong>File saved:</strong> static/attendance/attendance_${new Date().toISOString().split("T")[0]}.csv
+                            </div>
+                        `;
+                    } else {
+                        resultDiv.className = "scan-result error";
+                        resultText.innerHTML = `<div class="employee-info"><strong>Error:</strong><br>${data.message}</div>`;
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert("Error processing check-out");
+                });
+        }
+
+        function clearScan() {
+            fetch("/clear_scan")
+                .then((response) => response.json())
+                .then((data) => {
+                    const resultDiv = document.getElementById("scanResult");
+                    const resultText = document.getElementById("resultText");
+
+                    resultDiv.className = "scan-result info";
+                    resultText.innerHTML = "<p>Scan data cleared. Ready for next scan.</p>";
+                    currentScanData = null;
+                    updateActionButtons();
+                })
+                .catch((error) => console.error("Error:", error));
+        }
+
+        // Start polling when page loads
+        window.onload = function () {
+            startPolling();
+            updateActionButtons();
+        };
+    </script>
+</body>
+</html>

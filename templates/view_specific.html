@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Attendance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .attendance-table th, .attendance-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .attendance-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .attendance-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .file-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .file-list li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 5px solid #4CAF50;
+        }
+        .file-list a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .file-list a:hover {
+            color: #4CAF50;
+        }
+        .section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        .download-btn {
+            background-color: #2196F3;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance Records</h1>
+    
+    <div class="section">
+        <h2>Today's Attendance ({{ today_date }})</h2>
+        {% if today_records %}
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in today_records %}
+                    <tr>
+                        <td>{{ record['Employee ID'] }}</td>
+                        <td>{{ record['Name'] }}</td>
+                        <td>{{ record['Department'] }}</td>
+                        <td>{{ record['Check-in'] }}</td>
+                        <td>{{ record['Check-out'] }}</td>
+                        <td>{{ record['Status'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No attendance records for today.</p>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h2>All Attendance Files</h2>
+        {% if files %}
+            <ul class="file-list">
+                {% for file in files %}
+                <li>
+                    <a href="/view/{{ file }}">{{ file }}</a>
+                    <a href="/download/{{ file }}" class="download-btn">Download</a>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No attendance files found.</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <a href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

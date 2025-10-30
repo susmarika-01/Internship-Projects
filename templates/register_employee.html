@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Employee | QR Attendance System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #2196f3;
+        --primary-dark: #1976d2;
+        --secondary: #4caf50;
+        --accent: #ff9800;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --gray: #6c757d;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Header */
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        transform: rotate(30deg);
+      }
+
+      .header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        position: relative;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        position: relative;
+      }
+
+      .header-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      /* Navigation */
+      .navigation {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-btn {
+        background: white;
+        color: var(--primary);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        box-shadow: var(--shadow);
+        min-width: 150px;
+        justify-content: center;
+      }
+
+      .nav-btn i {
+        margin-right: 8px;
+      }
+
+      .nav-btn:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Main Content Layout */
+      .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      /* Form Container */
+      .form-container {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .form-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+      }
+
+      .form-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .form-header h2 {
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .form-header p {
+        color: var(--gray);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .input-with-icon {
+        position: relative;
+      }
+
+      .input-with-icon i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gray);
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: var(--transition);
+      }
+
+      input[type="text"]:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+        outline: none;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 20px;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      .submit-btn {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .submit-btn i {
+        margin-right: 10px;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 14px rgba(33, 150, 243, 0.3);
+      }
+
+      /* Success Message */
+      .success-message {
+        background: linear-gradient(135deg, var(--secondary) 0%, #45a049 100%);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+        display: none;
+        animation: slideDown 0.5s ease;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .success-message::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        transform: rotate(30deg);
+      }
+
+      .success-message i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .success-message h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        position: relative;
+      }
+
+      .success-message p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        position: relative;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* QR Result Section - Enhanced Design */
+      .qr-result-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 30px;
+        box-shadow: var(--shadow);
+        display: none;
+        animation: fadeInUp 0.8s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(33, 150, 243, 0.1);
+      }
+
+      .qr-result-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .qr-result-header {
+        text-align: center;
+        margin-bottom: 35px;
+        position: relative;
+      }
+
+      .qr-result-header h3 {
+        color: var(--primary);
+        margin-bottom: 12px;
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .qr-result-header p {
+        color: var(--gray);
+        font-size: 1.1rem;
+      }
+
+      .qr-result-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .qr-display-container {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .qr-preview {
+        text-align: center;
+        position: relative;
+      }
+
+      .qr-image-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .qr-image {
+        width: 220px;
+        height: 220px;
+        border: 3px solid #e9ecef;
+        border-radius: 16px;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transition: var(--transition);
+      }
+
+      .qr-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        border-color: var(--primary);
+      }
+
+      .qr-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: var(--accent);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+
+      .employee-details-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        min-width: 250px;
+      }
+
+      .employee-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 12px;
+        line-height: 1.3;
+      }
+
+      .employee-meta {
+        color: var(--gray);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .employee-meta i {
+        color: var(--primary);
+        margin-right: 5px;
+        width: 16px;
+      }
+
+      .download-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .download-btn {
+        background: linear-gradient(
+          135deg,
+          var(--secondary) 0%,
+          #45a049 100%
+        );
+        color: white;
+        padding: 14px 28px;
+        text-decoration: none;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 600;
+        transition: var(--transition);
+        box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+        font-size: 1rem;
+      }
+
+      .download-btn i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+      }
+
+      .download-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+      }
+
+      .secondary-btn {
+        background: white;
+        color: var(--primary);
+        padding: 14px 28px;
+        text-decoration: none;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 600;
+        transition: var(--transition);
+        border: 2px solid var(--primary);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+      }
+
+      .secondary-btn i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+      }
+
+      .secondary-btn:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+      }
+
+      .qr-instructions {
+        background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        color: var(--dark);
+        font-size: 1rem;
+        border-left: 4px solid var(--accent);
+        margin-top: 25px;
+        max-width: 600px;
+      }
+
+      .qr-instructions i {
+        color: var(--accent);
+        margin-right: 8px;
+        font-size: 1.1rem;
+      }
+
+      .action-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .action-step {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid var(--primary);
+        transition: var(--transition);
+      }
+
+      .action-step:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .action-step i {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 12px;
+      }
+
+      .action-step h4 {
+        color: var(--dark);
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+      }
+
+      .action-step p {
+        color: var(--gray);
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      /* Info Section */
+      .info-section {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: var(--shadow);
+        margin-top: 30px;
+      }
+
+      .info-section h3 {
+        color: var(--primary);
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .info-points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .info-point {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 8px;
+        background: var(--light);
+      }
+
+      .info-point i {
+        color: var(--primary);
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 1.8rem;
+        }
+
+        .navigation {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-btn {
+          width: 100%;
+          max-width: 250px;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .qr-display-container {
+          flex-direction: column;
+          gap: 25px;
+        }
+
+        .qr-image {
+          width: 200px;
+          height: 200px;
+        }
+
+        .download-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .download-btn,
+        .secondary-btn {
+          width: 100%;
+          max-width: 280px;
+          justify-content: center;
+        }
+
+        .action-steps {
+          grid-template-columns: 1fr;
+        }
+
+        .info-points {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .qr-result-content {
+          gap: 20px;
+        }
+
+        .employee-details-card {
+          padding: 20px;
+        }
+
+        .qr-image {
+          width: 180px;
+          height: 180px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-icon">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        <h1>Register New Employee</h1>
+        <p>Add employee details to generate their QR code</p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="navigation">
+        <a href="/" class="nav-btn"> <i class="fas fa-home"></i> Home </a>
+        <a href="/scanner" class="nav-btn">
+          <i class="fas fa-camera"></i> QR Scanner
+        </a>
+        <a href="/view" class="nav-btn">
+          <i class="fas fa-chart-bar"></i> View Attendance
+        </a>
+        <a href="/qrcodes" class="nav-btn">
+          <i class="fas fa-qrcode"></i> View QR Codes
+        </a>
+      </div>
+
+      <div class="content-wrapper">
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+          <i class="fas fa-check-circle"></i>
+          <h3>Employee Registered Successfully!</h3>
+          <p>QR code has been generated and saved to the system.</p>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+          <div class="form-header">
+            <h2>Employee Information</h2>
+            <p>Fill in the details below to register a new employee</p>
+          </div>
+
+          <form method="POST" id="employeeForm">
+            <div class="form-group">
+              <label for="name">Full Name:</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user"></i>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter employee's full name"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="emp_id">Employee ID:</label>
+              <div class="input-with-icon">
+                <i class="fas fa-id-card"></i>
+                <input
+                  type="text"
+                  id="emp_id"
+                  name="emp_id"
+                  placeholder="e.g., EMP001"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="dept">Department:</label>
+              <div class="input-with-icon">
+                <i class="fas fa-building"></i>
+                <input
+                  type="text"
+                  id="dept"
+                  name="dept"
+                  placeholder="e.g., Engineering"
+                  required
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-qrcode"></i> Generate QR Code
+            </button>
+          </form>
+        </div>
+
+        <!-- Enhanced QR Result Section -->
+        <div class="qr-result-section" id="qrResultSection">
+          <div class="qr-result-header">
+            <h3><i class="fas fa-qrcode"></i> QR Code Generated Successfully!</h3>
+            <p>Employee QR code is ready for download and printing</p>
+          </div>
+
+          <div class="qr-result-content">
+            <div class="qr-display-container">
+              <div class="qr-preview">
+                <div class="qr-image-container">
+                  <img src="" class="qr-image" id="qrImage" alt="QR Code" />
+                  <div class="qr-badge">
+                    <i class="fas fa-check"></i> READY
+                  </div>
+                </div>
+              </div>
+
+              <div class="employee-details-card">
+                <div class="employee-name" id="employeeName"></div>
+                <div class="employee-meta">
+                  <div><i class="fas fa-id-card"></i> <span id="employeeId"></span></div>
+                  <div><i class="fas fa-building"></i> <span id="employeeDept"></span></div>
+                  <div><i class="fas fa-calendar"></i> Generated: <span id="generationDate"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="download-actions">
+              <a href="#" class="download-btn" id="downloadLink">
+                <i class="fas fa-download"></i> Download QR Code
+              </a>
+              <a href="/qrcodes" class="secondary-btn">
+                <i class="fas fa-eye"></i> View All QR Codes
+              </a>
+              <a href="/register" class="secondary-btn">
+                <i class="fas fa-user-plus"></i> Register Another
+              </a>
+            </div>
+
+            <div class="action-steps">
+              <div class="action-step">
+                <i class="fas fa-print"></i>
+                <h4>Print QR Code</h4>
+                <p>Print the QR code and provide it to the employee</p>
+              </div>
+              <div class="action-step">
+                <i class="fas fa-camera"></i>
+                <h4>Scan for Attendance</h4>
+                <p>Use the QR scanner to track employee attendance</p>
+              </div>
+              <div class="action-step">
+                <i class="fas fa-history"></i>
+                <h4>Track Records</h4>
+                <p>View attendance records in the dashboard</p>
+              </div>
+            </div>
+
+            <div class="qr-instructions">
+              <i class="fas fa-info-circle"></i>
+              <strong>Important:</strong> This QR code is now saved in the system. 
+              Print and distribute it to the employee for attendance tracking. 
+              The employee can use this QR code with the scanner app.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="info-section">
+        <h3>How It Works</h3>
+        <div class="info-points">
+          <div class="info-point">
+            <i class="fas fa-user-check"></i>
+            <span>Employee details are saved to the system</span>
+          </div>
+          <div class="info-point">
+            <i class="fas fa-qrcode"></i>
+            <span>A unique QR code is generated for the employee</span>
+          </div>
+          <div class="info-point">
+            <i class="fas fa-download"></i>
+            <span>QR code can be downloaded and printed</span>
+          </div>
+          <div class="info-point">
+            <i class="fas fa-camera"></i>
+            <span>Employee uses QR code for attendance tracking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Form submission handling
+      document
+        .getElementById("employeeForm")
+        .addEventListener("submit", function (e) {
+          // Let the form submit normally to your Flask backend
+          // The backend will handle QR code generation and redirect
+
+          // Show loading state
+          const submitBtn = this.querySelector(".submit-btn");
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Generating QR Code...';
+          submitBtn.disabled = true;
+
+          // The form will submit normally and the backend will handle everything
+          // No need for JavaScript to handle the response since Flask will redirect/render
+        });
+
+      // Add animation to form elements on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        const formGroups = document.querySelectorAll(".form-group");
+        formGroups.forEach((group, index) => {
+          group.style.opacity = "0";
+          group.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            group.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+            group.style.opacity = "1";
+            group.style.transform = "translateY(0)";
+          }, index * 150);
+        });
+
+        // Check if we have a recently generated QR code in session storage
+        const savedQR = sessionStorage.getItem("lastGeneratedQR");
+        if (savedQR) {
+          const qrData = JSON.parse(savedQR);
+          showGeneratedQR(
+            qrData.filename,
+            qrData.name,
+            qrData.empId,
+            qrData.dept
+          );
+          sessionStorage.removeItem("lastGeneratedQR");
+        }
+      });
+
+      // Function to show the generated QR code
+      function showGeneratedQR(filename, name, empId, dept) {
+        const successMessage = document.getElementById("successMessage");
+        const qrResultSection = document.getElementById("qrResultSection");
+        const qrImage = document.getElementById("qrImage");
+        const employeeName = document.getElementById("employeeName");
+        const employeeId = document.getElementById("employeeId");
+        const employeeDept = document.getElementById("employeeDept");
+        const generationDate = document.getElementById("generationDate");
+        const downloadLink = document.getElementById("downloadLink");
+
+        // Show success message and QR result section
+        successMessage.style.display = "block";
+        qrResultSection.style.display = "block";
+
+        // Set QR code image and download link
+        qrImage.src = `/static/qrcodes/${filename}`;
+        downloadLink.href = `/download_qr/${filename}`;
+        downloadLink.download = filename;
+
+        // Set employee info
+        employeeName.textContent = name;
+        employeeId.textContent = empId;
+        employeeDept.textContent = dept;
+        generationDate.textContent = new Date().toLocaleDateString();
+
+        // Scroll to QR result section
+        qrResultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    </script>
+  </body>
+</html>
