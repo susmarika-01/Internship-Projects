@@ -38,17 +38,17 @@ python app.py
  - Construction site worker tracking
 
 ## Project Structure
- qr-attendance-system/
- ├── app.py (Main Flask application)
- ├── templates/ (Web interface pages)
- │   ├── index.html (Dashboard)
- │   ├── register_employee.html
- │   ├── scanner.html (QR scanning)
- │   ├── view_attendance.html
- │   └── qrcodes_list.html
- └── static/
-     ├── qrcodes/ (Generated QR code images)
-     └── attendance/ (Attendance CSV records)
+# qr-attendance-system/
+# ├── app.py (Main Flask application)
+# ├── templates/ (Web interface pages)
+# │   ├── index.html (Dashboard)
+# │   ├── register_employee.html
+# │   ├── scanner.html (QR scanning)
+# │   ├── view_attendance.html
+# │   └── qrcodes_list.html
+# └── static/
+#     ├── qrcodes/ (Generated QR code images)
+#     └── attendance/ (Attendance CSV records)
 
 ## Technology Stack
  Backend: Python, Flask
