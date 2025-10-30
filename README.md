@@ -1,4 +1,4 @@
-# QR Attendance System
+### QR Attendance System
 
 ## Quick Start
 pip install flask qrcode opencv-python
