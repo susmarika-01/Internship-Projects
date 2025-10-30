@@ -51,10 +51,10 @@ python app.py
 #     └── attendance/ (Attendance CSV records)
 
 ## Technology Stack
- Backend: Python, Flask
- QR Processing: OpenCV, qrcode
- Frontend: HTML5, CSS3, JavaScript
- Data Storage: CSV files
- Computer Vision: Real-time camera processing
+ - Backend: Python, Flask
+ - QR Processing: OpenCV, qrcode
+ - Frontend: HTML5, CSS3, JavaScript
+ - Data Storage: CSV files
+ - Computer Vision: Real-time camera processing
 
-# This system provides a cost-effective, efficient alternative to expensive biometric systems while maintaining accuracy and ease of use. Perfect for small to medium businesses, educational institutions, and organizations looking to digitize their attendance tracking process.
+This system provides a cost-effective, efficient alternative to expensive biometric systems while maintaining accuracy and ease of use. Perfect for small to medium businesses, educational institutions, and organizations looking to digitize their attendance tracking process.
