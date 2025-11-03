@@ -1,0 +1,410 @@
+intent,question
+Set Alarm,Set an alarm for 7 AM tomorrow
+Set Alarm,Can you set an alarm for 6:30 in the morning?
+Set Alarm,Wake me up at 8 AM
+Set Alarm,Set alarm for 9 PM tonight
+Set Alarm,Create an alarm for 5:30 AM
+Set Alarm,Remind me to wake up at 7:15
+Set Alarm,Set an alarm for 6 AM sharp
+Set Alarm,Alarm for 10:30 PM please
+Set Alarm,Set morning alarm for 7:45
+Set Alarm,Create a recurring alarm for weekdays
+Set Alarm,Set alarm for Saturday morning
+Set Alarm,Wake me up at 5 AM tomorrow
+Set Alarm,Set alarm for 12 PM noon
+Set Alarm,Set recurring alarm for gym
+Set Alarm,Remind me at 6:15 AM
+Set Alarm,Alarm for weekend mornings
+Set Alarm,Set alarm for 11 PM tonight
+Set Alarm,Create morning alarm for weekdays
+Set Alarm,Set alarm every Monday at 7 AM
+Set Alarm,Wake me at 7:30 tomorrow
+Send Message,Text John hello how are you
+Send Message,Send a message to Sarah
+Send Message,Message mom I'll be late
+Send Message,Text my wife I love you
+Send Message,Send WhatsApp message to David
+Send Message,Message the group chat
+Send Message,Text Mike about the meeting
+Send Message,Send SMS to Lisa
+Send Message,Write a message to my brother
+Send Message,Send text to emergency contact
+Send Message,Text Anna about dinner
+Send Message,Message boss regarding report
+Send Message,Text Tom about the schedule
+Send Message,Send message to class group
+Send Message,Text dad good morning
+Send Message,Message friend for party invite
+Send Message,Text team about project update
+Send Message,Send WhatsApp message to client
+Send Message,Message Lisa about meeting
+Make Call,Call my mom
+Make Call,Dial John's number
+Make Call,Phone my brother
+Make Call,Call emergency services
+Make Call,Ring my office
+Make Call,Make a video call to Sarah
+Make Call,Call home
+Make Call,Phone the pizza place
+Make Call,Call my dentist office
+Make Call,Make an international call
+Make Call,Call grandma
+Make Call,Dial the hotel reception
+Make Call,Call taxi service
+Make Call,Phone doctor office
+Make Call,Call bank support
+Make Call,Make video call to mom
+Make Call,Call uncle in USA
+Make Call,Phone office manager
+Make Call,Call neighbor
+Make Call,Call electricity department
+Check Weather,What's the weather today?
+Check Weather,Is it going to rain tomorrow?
+Check Weather,Temperature for this weekend
+Check Weather,Weather forecast for New York
+Check Weather,How hot is it outside?
+Check Weather,Will it snow today?
+Check Weather,Weather update please
+Check Weather,What's the humidity level?
+Check Weather,Check weather for my location
+Check Weather,Will I need an umbrella today?
+Check Weather,Weather forecast for next week
+Check Weather,Temperature in London today
+Check Weather,Is it windy outside?
+Check Weather,Will it hail today?
+Check Weather,Weather update for Tokyo
+Check Weather,Humidity level right now
+Check Weather,Check weather at my place
+Check Weather,What's the chance of rain today?
+Check Weather,Weather update for this evening
+Check Weather,Weather report for tomorrow morning
+Set Reminder,Remind me to buy milk
+Set Reminder,Set a reminder for my doctor's appointment
+Set Reminder,Remind me about the meeting at 3 PM
+Set Reminder,Create reminder for birthday party
+Set Reminder,Remind me to call mom tomorrow
+Set Reminder,Set reminder for medication
+Set Reminder,Remind me of the deadline
+Set Reminder,Create a reminder for Friday
+Set Reminder,Remind me to pay bills
+Set Reminder,Set reminder for anniversary
+Set Reminder,Remind me to water plants
+Set Reminder,Set reminder to study at 6 PM
+Set Reminder,Remind me to submit assignment
+Set Reminder,Set reminder to check email
+Set Reminder,Remind me to pick up laundry
+Set Reminder,Create reminder for gym
+Set Reminder,Remind me to feed pets
+Set Reminder,Set reminder for conference call
+Set Reminder,Remind me to take medicine
+Play Music,Play some jazz music
+Play Music,Play my workout playlist
+Play Music,Start playing classical music
+Play Music,Play the latest hits
+Play Music,Shuffle my favorite songs
+Play Music,Play some relaxing music
+Play Music,Start music playback
+Play Music,Play rock music
+Play Music,Play 80s music playlist
+Play Music,Play artist Taylor Swift
+Play Music,Play my chill playlist
+Play Music,Play pop music
+Play Music,Play morning playlist
+Play Music,Start jazz playlist
+Play Music,Play Spotify top hits
+Play Music,Play acoustic songs
+Play Music,Play party music
+Play Music,Play dance playlist
+Play Music,Play favorite tracks
+Play Music,Play indie music playlist
+Search Web,Search for Italian restaurants nearby
+Search Web,Look up machine learning tutorials
+Search Web,Search Python documentation
+Search Web,Find hotels in Paris
+Search Web,Search for coffee shops
+Search Web,Look up movie times
+Search Web,Search for vegan recipes
+Search Web,Find flights to London
+Search Web,Search for home repair tips
+Search Web,Look up science articles
+Search Web,Search for nearby bookstores
+Search Web,Find news articles on AI
+Search Web,Search for hiking trails
+Search Web,Look up historical events
+Search Web,Find best sushi restaurants
+Search Web,Search for gym locations
+Search Web,Look up photography tutorials
+Search Web,Search for travel guides
+Search Web,Find best budget hotels
+Search Web,Search for coding challenges
+Calculate,What is 15 times 23?
+Calculate,Calculate 45 divided by 9
+Calculate,How much is 123 plus 456?
+Calculate,What's 15 percent of 200?
+Calculate,Square root of 144
+Calculate,Calculate area of circle radius 5
+Calculate,Convert 100 dollars to euros
+Calculate,How many days until Christmas?
+Calculate,Calculate mortgage payment
+Calculate,What is 65 times 89?
+Calculate,Multiply 34 by 27
+Calculate,Divide 100 by 4
+Calculate,Add 345 and 678
+Calculate,Subtract 89 from 456
+Calculate,What's 20 percent of 500?
+Calculate,Square root of 225
+Calculate,Area of rectangle length 10 width 5
+Calculate,Convert 50 euros to dollars
+Calculate,Calculate simple interest 1000 5 2
+Calculate,Compute factorial of 6
+Navigate,Give me directions to the airport
+Navigate,How do I get to Central Park?
+Navigate,Navigate to nearest gas station
+Navigate,Directions to my home
+Navigate,Find route to supermarket
+Navigate,How long to drive to Chicago?
+Navigate,Show me walking directions
+Navigate,Best route to downtown
+Navigate,Navigate to closest hospital
+Navigate,Directions to museum
+Navigate,Find route to train station
+Navigate,Show me shortest path to school
+Navigate,Get directions to stadium
+Navigate,Navigate to coffee shop
+Navigate,Directions to university
+Navigate,Show route to cinema
+Navigate,Find way to library
+Navigate,Navigate to police station
+Navigate,Directions to park
+Navigate,Find route to restaurant
+Set Timer,Set a timer for 10 minutes
+Set Timer,Start a 5-minute timer
+Set Timer,Timer for 30 minutes please
+Set Timer,Countdown for 15 minutes
+Set Timer,Set cooking timer for 20 min
+Set Timer,Start stopwatch
+Set Timer,Timer for one hour
+Set Timer,Set timer for 45 seconds
+Set Timer,Set timer for pizza delivery
+Set Timer,Kitchen timer for baking
+Set Timer,Set study timer for 25 min
+Set Timer,Timer for washing clothes
+Set Timer,Start coffee timer
+Set Timer,Timer for meditation 10 min
+Set Timer,Set laundry timer
+Set Timer,Timer for break 5 min
+Set Timer,Start running timer
+Set Timer,Timer for game session
+Set Timer,Set timer for online meeting
+Check Time,What time is it?
+Check Time,Current time please
+Check Time,What's the time in London?
+Check Time,Time in Tokyo right now
+Check Time,What time zone am I in?
+Check Time,Is it AM or PM?
+Check Time,What's the date and time?
+Check Time,Time check please
+Check Time,What time does the sun set?
+Check Time,Time in different countries
+Check Time,Time in New York
+Check Time,Current local time
+Check Time,Time in Sydney
+Check Time,What time is it in Paris?
+Check Time,Time in Berlin now
+Check Time,What is midnight in Tokyo?
+Check Time,Time in Singapore
+Check Time,Current time in Los Angeles
+Check Time,Time for sunrise
+Create Note,Take a note buy groceries
+Create Note,Note down meeting notes
+Create Note,Create a shopping list
+Create Note,Write note remember password
+Create Note,Note ideas for project
+Create Note,Create reminder note
+Create Note,Take down this address
+Create Note,Write a quick note
+Create Note,Note recipe ingredients
+Create Note,Document this thought
+Create Note,Note for to-do list
+Create Note,Write idea for blog
+Create Note,Take note for class
+Create Note,Document workout plan
+Create Note,Note for groceries
+Create Note,Write note about travel
+Create Note,Create list of contacts
+Create Note,Take down appointment notes
+Create Note,Note down birthday reminders
+Check Calendar,What's on my calendar today?
+Check Calendar,Show my schedule for tomorrow
+Check Calendar,Any appointments this week?
+Check Calendar,Calendar events for Monday
+Check Calendar,What meetings do I have?
+Check Calendar,Show upcoming events
+Check Calendar,Check my calendar
+Check Calendar,What's my schedule?
+Check Calendar,Calendar for next week
+Check Calendar,Busy times this month
+Check Calendar,Show events for Friday
+Check Calendar,Check appointments for today
+Check Calendar,Upcoming meetings list
+Check Calendar,What's on agenda for tomorrow?
+Check Calendar,Check calendar for weekend
+Check Calendar,List meetings this week
+Check Calendar,Upcoming deadlines
+Check Calendar,Check school timetable
+Check Calendar,Show events for next Monday
+Check Calendar,Check doctor appointments
+Send Email,Email John about the report
+Send Email,Send email to team members
+Send Email,Compose new email
+Send Email,Email my professor
+Send Email,Send meeting minutes via email
+Send Email,Email the document
+Send Email,Write email to customer service
+Send Email,Email photo to mom
+Send Email,Email resume to employer
+Send Email,Send urgent email
+Send Email,Compose email to manager
+Send Email,Send weekly newsletter
+Send Email,Email confirmation to client
+Send Email,Forward email to colleague
+Send Email,Email invoice to customer
+Send Email,Send invitation email
+Send Email,Email project update
+Send Email,Send feedback email
+Find Location,Where is the nearest bank?
+Find Location,Find coffee shops near me
+Find Location,Locate the post office
+Find Location,Where can I find a pharmacy?
+Find Location,Nearest grocery store location
+Find Location,Find Italian restaurants
+Find Location,Where is the library?
+Find Location,Locate gas stations nearby
+Find Location,Find ATMs close by
+Find Location,Where is the police station?
+Find Location,Locate hospital near me
+Find Location,Where is the closest bus stop?
+Find Location,Find nearest petrol station
+Find Location,Locate nearby restaurants
+Find Location,Where is the train station?
+Find Location,Locate nearest park
+Find Location,Find nearest cinema
+Find Location,Locate nearby hotel
+Find Location,Where is the nearest school?
+Translate,Translate hello to Spanish
+Translate,How do you say thank you in French?
+Translate,Translate this sentence to German
+Translate,What is goodbye in Japanese?
+Translate,Translate document to English
+Translate,How to say water in Italian?
+Translate,Translate these words
+Translate,Spanish translation please
+Translate,Translate to Mandarin Chinese
+Translate,French to English translation
+Translate,Translate "good night" to Italian
+Translate,Translate "I love you" to Spanish
+Translate,How to say "happy birthday" in French
+Translate,Translate "see you later" to Japanese
+Translate,Translate email to English
+Translate,Translate instructions to German
+Translate,Translate menu to French
+Translate,Translate this paragraph to Spanish
+Translate,Translate text to Italian
+Translate,Translate speech to English
+Check Stocks,Stock price of Apple
+Check Stocks,How are my investments doing?
+Check Stocks,Check Tesla stock
+Check Stocks,Stock market update
+Check Stocks,What's Amazon stock at?
+Check Stocks,Check my portfolio
+Check Stocks,Dow Jones today
+Check Stocks,Stock prices please
+Check Stocks,Nasdaq index value
+Check Stocks,Stock performance today
+Check Stocks,Check Microsoft stock
+Check Stocks,Stock value of Google
+Check Stocks,Check Facebook stock
+Check Stocks,Stock report for today
+Check Stocks,Check market indices
+Check Stocks,Stock info for Netflix
+Check Stocks,Stock update for IBM
+Check Stocks,Check investment portfolio
+Check Stocks,Current stock prices
+Check Stocks,Stock trend today
+Read News,What's the latest news?
+Read News,News headlines today
+Read News,Sports news update
+Read News,Technology news please
+Read News,Current events summary
+Read News,Breaking news alerts
+Read News,Business news today
+Read News,World news update
+Read News,Political news today
+Read News,Local news headlines
+Read News,News about climate change
+Read News,Entertainment news
+Read News,Health news update
+Read News,Financial news today
+Read News,News on AI developments
+Read News,Education news headlines
+Read News,Science news today
+Read News,Travel news update
+Read News,Automotive news headlines
+Take Photo,Take a picture
+Take Photo,Snap a photo of this
+Take Photo,Open camera
+Take Photo,Take selfie
+Take Photo,Capture this document
+Take Photo,Take portrait photo
+Take Photo,Start camera app
+Take Photo,Take group photo
+Take Photo,Photo of this receipt
+Take Photo,Take landscape picture
+Control Lights,Turn on the living room lights
+Control Lights,Dim the bedroom lights
+Control Lights,Turn off all lights
+Control Lights,Set lights to blue
+Control Lights,Brighten the kitchen lights
+Control Lights,Change light color
+Control Lights,Toggle office lights
+Control Lights,Make lights warmer
+Control Lights,Activate night light mode
+Control Lights,Set lighting scene
+Adjust Volume,Increase volume
+Adjust Volume,Make it louder
+Adjust Volume,Volume down please
+Adjust Volume,Mute the sound
+Adjust Volume,Set volume to 50 percent
+Adjust Volume,Unmute audio
+Adjust Volume,Lower the volume
+Adjust Volume,Max volume please
+Adjust Volume,Volume level adjustment
+Adjust Volume,Quiet mode please
+Check Battery,What's my battery level?
+Check Battery,How much battery left?
+Check Battery,Battery percentage
+Check Battery,Is my phone charging?
+Check Battery,Battery status
+Check Battery,How long until full charge?
+Check Battery,Battery health check
+Check Battery,Power level please
+Check Battery,Battery saving mode
+Check Battery,Check device power
+Find Contact,Find John's phone number
+Find Contact,What's Sarah's email?
+Find Contact,Show me David's contact
+Find Contact,Find my doctor's number
+Find Contact,Contact information for Mike
+Find Contact,Look up Lisa's address
+Find Contact,Find emergency contacts
+Find Contact,Show mom's contact details
+Find Contact,Find business contacts
+Find Contact,Contact details for plumber
+Find Contact,Find taxi driver contact
+Find Contact,Show hotel manager contact
+Find Contact,Find nearby friends contacts
+Find Contact,Look up coworker number
+Find Contact,Find dentist phone number
+Find Contact,Find restaurant contact
+Find Contact,Show family contacts
+Find Contact,Look up favorite stores contact
